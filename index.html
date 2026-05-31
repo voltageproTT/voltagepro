@@ -3,309 +3,1118 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="VoltagePro — Licensed electrical services across Port of Spain and the East-West Corridor. Residential, commercial and emergency."/>
 <title>VoltagePro Electrical Services | Trinidad</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --yellow: #FFD600;
-    --yellow-dim: #c9a800;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --card: #161616;
-    --border: #2a2a2a;
-    --text: #e8e8e8;
-    --muted: #888;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+:root {
+  --y: #F5C400;
+  --y2: #ffdd55;
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1a1a1a;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0ede6;
+  --muted: #888880;
+  --red: #c0392b;
+}
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 2rem;
-    background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: 0.05em; color: var(--yellow); text-transform: uppercase; }
-  .nav-logo span { color: var(--text); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--yellow); }
-  .nav-cta { background: var(--yellow); color: var(--black); padding: 0.55rem 1.3rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
-  .nav-cta:hover { background: var(--yellow-dim); }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
 
-  .hero { min-height: 100vh; position: relative; display: flex; align-items: center; overflow: hidden; }
-  .hero-img { position: absolute; inset: 0; }
-  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.3) 100%); }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,214,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,214,0,0.03) 1px, transparent 1px); background-size: 60px 60px; }
-  .hero-content { position: relative; max-width: 1100px; margin: 0 auto; width: 100%; padding: 8rem 2rem 4rem; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,214,0,0.1); border: 1px solid rgba(255,214,0,0.3); padding: 0.35rem 0.85rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)} }
-  .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(3.5rem, 7vw, 6rem); line-height: 0.92; text-transform: uppercase; animation: fadeUp 0.6s 0.1s ease both; max-width: 600px; }
-  .hero-title .accent { color: var(--yellow); }
-  .hero-title .stroke { -webkit-text-stroke: 2px var(--yellow); color: transparent; }
-  .hero-sub { margin-top: 1.5rem; color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 460px; animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--yellow); color: var(--black); padding: 0.9rem 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--yellow); transition: all 0.2s; }
-  .btn-primary:hover { background: transparent; color: var(--yellow); }
-  .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text); padding: 0.9rem 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--border); transition: all 0.2s; }
-  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-  .trust-bar { background: var(--yellow); padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-  .trust-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--black); }
+/* CUSTOM CURSOR */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--y);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--y);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.15s ease, width 0.3s, height 0.3s;
+  opacity: 0.5;
+}
 
-  .split-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
-  .split-img { position: relative; overflow: hidden; min-height: 400px; }
-  .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-  .split-img:hover img { transform: scale(1.03); }
-  .split-content { background: var(--dark); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border); }
-  .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.75rem; }
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; line-height: 1; margin-bottom: 1.5rem; }
-  .split-content p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1rem; }
-  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .mini-stat { border-left: 3px solid var(--yellow); padding-left: 1rem; }
-  .mini-stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2rem; color: var(--yellow); }
-  .mini-stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+}
 
-  .services-outer { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .service-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
-  .service-card:hover { border-color: var(--yellow); transform: translateY(-4px); }
-  .service-card-img { height: 180px; overflow: hidden; }
-  .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-  .service-card:hover .service-card-img img { transform: scale(1.06); }
-  .service-card-body { padding: 1.5rem; }
-  .service-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; color: var(--text); }
-  .service-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(16px);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.1em;
+  color: var(--y);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--text); }
+.nav-links {
+  display: flex; gap: 2.5rem; list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s;
+  font-family: 'Space Mono', monospace;
+}
+.nav-links a:hover { color: var(--y); }
+.nav-quote {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--y);
+  color: #000;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+  border: 2px solid var(--y);
+}
+.nav-quote:hover { background: transparent; color: var(--y); }
 
-  .gallery-section { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 2rem; }
-  .gallery-inner { max-width: 1100px; margin: 0 auto; }
-  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 4px; margin-top: 2.5rem; }
-  .gallery-item { overflow: hidden; position: relative; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: brightness(0.85); }
-  .gallery-item:hover img { transform: scale(1.06); filter: brightness(1); }
-  .gallery-item:first-child { grid-row: 1 / 3; }
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10rem 3rem 5rem;
+  position: relative;
+  z-index: 2;
+}
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.55) contrast(1.1);
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(270deg, transparent 60%, var(--bg) 100%);
+}
+.hero-right.loaded img { transform: scale(1); }
 
-  .testimonials { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .testimonial-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; position: relative; }
-  .testimonial-card::before { content: '"'; position: absolute; top: 1rem; right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 5rem; color: var(--yellow); opacity: 0.15; line-height: 1; }
-  .stars { color: var(--yellow); font-size: 0.9rem; margin-bottom: 1rem; }
-  .testimonial-text { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-  .testimonial-author { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
-  .testimonial-loc { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--y);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 28px; height: 2px;
+  background: var(--y);
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 10vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+}
+.hero-title .outline {
+  -webkit-text-stroke: 2px var(--y);
+  color: transparent;
+}
+.hero-title .solid { color: var(--y); }
+.hero-sub {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.8;
+  max-width: 380px;
+  font-weight: 400;
+  opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+}
+.hero-actions {
+  display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--y); color: #000;
+  padding: 1rem 2.2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--y);
+  transition: all 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--y); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: transparent; color: var(--text);
+  padding: 1rem 2.2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--border);
+  transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: var(--y); color: var(--y); }
 
-  .cta-banner { position: relative; overflow: hidden; }
-  .cta-banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2); }
-  .cta-banner-content { position: relative; padding: 6rem 2rem; text-align: center; max-width: 700px; margin: 0 auto; }
-  .cta-banner-content h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; line-height: 1; margin-bottom: 1rem; }
-  .cta-banner-content h2 span { color: var(--yellow); }
-  .cta-banner-content p { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+.hero-scroll {
+  position: absolute; bottom: 3rem; left: 3rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  opacity: 0; animation: fadeUp 0.7s 0.9s ease forwards;
+  z-index: 2;
+}
+.scroll-line {
+  width: 40px; height: 1px; background: var(--muted);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--y);
+  animation: scrollLine 2s 1.5s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%{left:-100%} 50%{left:0} 100%{left:100%}
+}
 
-  .contact-section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
-  .contact-icon { width: 42px; height: 42px; background: rgba(255,214,0,0.1); border: 1px solid rgba(255,214,0,0.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-  .contact-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .contact-value { color: var(--text); margin-top: 0.15rem; font-size: 0.9rem; }
-  .area-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-  .area-tag { background: rgba(255,214,0,0.08); border: 1px solid rgba(255,214,0,0.2); color: var(--yellow); padding: 0.3rem 0.8rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%; background: #25D366; color: white; padding: 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; margin-bottom: 1rem; }
-  .whatsapp-btn:hover { opacity: 0.9; }
-  .call-btn { display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%; background: transparent; color: var(--yellow); padding: 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--yellow); transition: all 0.2s; }
-  .call-btn:hover { background: var(--yellow); color: var(--black); }
+/* TICKER */
+.ticker-wrap {
+  background: var(--y);
+  overflow: hidden;
+  padding: 0.9rem 0;
+  border-top: none;
+}
+.ticker-track {
+  display: flex; gap: 0;
+  animation: ticker 25s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 0.1em;
+  color: #000;
+  padding: 0 2rem;
+}
+.ticker-dot { width: 5px; height: 5px; background: #000; border-radius: 50%; opacity: 0.4; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
-  footer span { color: var(--yellow); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)} }
+/* STATS BAR */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+.stat-block {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.stat-block:last-child { border-right: none; }
+.stat-block::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--y);
+  transition: width 0.5s ease;
+}
+.stat-block:hover::before { width: 100%; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--y);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-top: 0.4rem;
+  font-family: 'Space Mono', monospace;
+}
 
-  @media(max-width:768px){
-    .split-section,.contact-grid{grid-template-columns:1fr}
-    .split-content{padding:3rem 1.5rem}
-    .services-grid,.testimonials-grid{grid-template-columns:1fr}
-    .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-    .gallery-item:first-child{grid-row:auto}
-    .nav-links{display:none}
-    .trust-bar{gap:1.5rem}
-    .stat-row{grid-template-columns:1fr 1fr}
-  }
+/* ABOUT */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  border-bottom: 1px solid var(--border);
+}
+.about-img {
+  position: relative; overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+.about-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.6) contrast(1.15) grayscale(0.3);
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+.about-img:hover img { transform: scale(1.04); filter: brightness(0.75) contrast(1.1) grayscale(0); }
+.about-img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(13,13,13,0.85));
+  padding: 3rem 2.5rem 2rem;
+}
+.about-img-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 0.15em;
+  color: var(--y);
+}
+.about-content {
+  padding: 5rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--bg2);
+}
+.section-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--y);
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.section-eyebrow::after {
+  content: ''; flex: 1; height: 1px; background: var(--border); max-width: 60px;
+}
+.section-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+}
+.about-content p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.cert-row {
+  display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;
+}
+.cert-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text);
+  transition: border-color 0.2s;
+}
+.cert-badge:hover { border-color: var(--y); color: var(--y); }
+.cert-badge span { color: var(--y); font-size: 0.9rem; }
+
+/* SERVICES */
+.services {
+  padding: 7rem 3rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2rem;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.service-card {
+  background: var(--bg);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--y);
+  transition: height 0.35s ease;
+}
+.service-card:hover { background: var(--bg2); }
+.service-card:hover::before { height: 100%; }
+.service-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: rgba(245,196,0,0.12); }
+.service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.service-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+.service-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.service-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--y);
+  text-decoration: none;
+  margin-top: 1.2rem;
+  opacity: 0; transform: translateX(-8px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.service-card:hover .service-link { opacity: 1; transform: translateX(0); }
+
+/* PROCESS */
+.process {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 3rem;
+}
+.process-inner { max-width: 1100px; margin: 0 auto; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 4rem;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute; top: 2rem; left: 12%; right: 12%;
+  height: 1px; background: var(--border);
+}
+.process-step {
+  text-align: center; padding: 0 1.5rem;
+  position: relative;
+}
+.step-num {
+  width: 4rem; height: 4rem;
+  border: 2px solid var(--y);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; color: var(--y);
+  background: var(--bg2);
+  position: relative; z-index: 1;
+  transition: background 0.3s, color 0.3s;
+}
+.process-step:hover .step-num {
+  background: var(--y); color: #000;
+}
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 0.9rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.step-desc {
+  font-size: 0.8rem; color: var(--muted); line-height: 1.7;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 6rem 3rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 3px;
+  margin-top: 3rem;
+}
+.gallery-item {
+  overflow: hidden; position: relative;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(0.7) contrast(1.05) grayscale(0.2);
+  transform: scale(1.02);
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1);
+  filter: brightness(0.9) contrast(1) grayscale(0);
+}
+.gallery-item:first-child { grid-row: 1 / 3; }
+.gallery-item-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(13,13,13,0.9));
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--y);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item:hover .gallery-item-label { opacity: 1; transform: translateY(0); }
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 6rem 3rem;
+}
+.testimonials-inner { max-width: 1100px; margin: 0 auto; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 3.5rem;
+}
+.testimonial-card {
+  background: var(--bg2);
+  padding: 2.5rem;
+  position: relative;
+  transition: background 0.3s;
+}
+.testimonial-card:hover { background: var(--bg3); }
+.t-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem; line-height: 0.8;
+  color: var(--y); opacity: 0.15;
+  position: absolute; top: 1.5rem; right: 2rem;
+}
+.t-stars {
+  font-size: 0.75rem; letter-spacing: 0.1em;
+  color: var(--y); margin-bottom: 1.2rem;
+}
+.t-text {
+  font-size: 0.875rem; color: var(--muted);
+  line-height: 1.8; margin-bottom: 2rem;
+  font-style: italic;
+}
+.t-author {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 0.9rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.t-loc {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; color: var(--muted);
+  letter-spacing: 0.1em; margin-top: 0.3rem;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  position: relative; overflow: hidden;
+  min-height: 420px;
+  display: flex; align-items: center;
+  border-top: 1px solid var(--border);
+}
+.cta-banner-bg {
+  position: absolute; inset: 0;
+}
+.cta-banner-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.2) contrast(1.2) grayscale(0.5);
+}
+.cta-banner-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(13,13,13,0.97) 40%, rgba(245,196,0,0.08) 100%);
+}
+.cta-content {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+  padding: 5rem 3rem;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 4rem; width: 100%;
+}
+.cta-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.9; letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.cta-text h2 em { color: var(--y); font-style: normal; }
+.cta-text p {
+  color: var(--muted); font-size: 0.9rem;
+  line-height: 1.75; max-width: 450px;
+}
+.cta-actions { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+.cta-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.1em;
+  color: var(--muted); text-transform: uppercase;
+  text-align: center;
+}
+
+/* CONTACT */
+.contact {
+  padding: 7rem 3rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; margin-top: 4rem;
+  align-items: start;
+}
+.contact-info-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-icon-box {
+  width: 42px; height: 42px;
+  border: 1px solid var(--y);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+  color: var(--y);
+}
+.contact-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.contact-value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.95rem;
+  color: var(--text);
+}
+.area-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-top: 2rem;
+}
+.area-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+.area-tag:hover { border-color: var(--y); color: var(--y); }
+.contact-actions { display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
+.whatsapp-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  background: #25D366; color: #fff;
+  padding: 1.1rem 2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.whatsapp-btn:hover { opacity: 0.85; }
+.call-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: transparent; color: var(--text);
+  padding: 1.1rem 2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+.call-btn:hover { border-color: var(--y); color: var(--y); }
+.contact-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.1em; text-align: center;
+  text-transform: uppercase;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 0.1em;
+  color: var(--y);
+}
+.footer-logo span { color: var(--muted); }
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.footer-links {
+  display: flex; gap: 1.5rem; list-style: none;
+}
+.footer-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--y); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 8rem 1.5rem 4rem; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .about { grid-template-columns: 1fr; }
+  .about-img { min-height: 300px; }
+  .about-content { padding: 3rem 1.5rem; }
+  .services { padding: 4rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .gallery { padding: 4rem 1.5rem; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: auto; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .cta-content { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  footer { flex-direction: column; align-items: flex-start; }
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+}
 </style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Voltage<span>Pro</span></div>
+  <a href="#" class="nav-logo">Voltage<span>Pro</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/18681234567" class="nav-cta">⚡ Get a Quote</a>
+  <a href="https://wa.me/18681234567" class="nav-quote">⚡ Get a Quote</a>
 </nav>
 
-<section class="hero">
-  <div class="hero-img">
-    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&auto=format&fit=crop" alt="Electrician hero"/>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Available Now · All Areas</div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Licensed · Certified · Trinidad & Tobago</div>
     <h1 class="hero-title">
-      <span class="accent">Licensed</span><br>
-      Electrical<br>
-      <span class="stroke">Services</span>
+      Voltage<br>
+      <span class="solid">Done</span><br>
+      <span class="outline">Right.</span>
     </h1>
-    <p class="hero-sub">Professional electrical work done right the first time. Residential, commercial and emergency services across Port of Spain and the East-West Corridor.</p>
+    <p class="hero-sub">Professional electrical services for residential, commercial and industrial properties across Port of Spain and the East-West Corridor.</p>
     <div class="hero-actions">
       <a href="https://wa.me/18681234567" class="btn-primary">⚡ WhatsApp Us</a>
-      <a href="#services" class="btn-secondary">Our Services →</a>
+      <a href="#services" class="btn-ghost">Our Services →</a>
     </div>
+  </div>
+  <div class="hero-right" id="heroRight">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1400&auto=format&fit=crop" alt="Electrician at work"/>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
   </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-item">✅ Licensed & Certified</div>
-  <div class="trust-item">⚡ 10+ Years Experience</div>
-  <div class="trust-item">🕐 24/7 Emergency</div>
-  <div class="trust-item">📍 East-West Corridor</div>
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Licensed & Certified <span class="ticker-dot"></span></span>
+    <span class="ticker-item">10+ Years Experience <span class="ticker-dot"></span></span>
+    <span class="ticker-item">500+ Jobs Completed <span class="ticker-dot"></span></span>
+    <span class="ticker-item">24/7 Emergency Response <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Residential & Commercial <span class="ticker-dot"></span></span>
+    <span class="ticker-item">East-West Corridor <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Licensed & Certified <span class="ticker-dot"></span></span>
+    <span class="ticker-item">10+ Years Experience <span class="ticker-dot"></span></span>
+    <span class="ticker-item">500+ Jobs Completed <span class="ticker-dot"></span></span>
+    <span class="ticker-item">24/7 Emergency Response <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Residential & Commercial <span class="ticker-dot"></span></span>
+    <span class="ticker-item">East-West Corridor <span class="ticker-dot"></span></span>
+  </div>
 </div>
 
-<section id="about" class="split-section">
-  <div class="split-img">
-    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&auto=format&fit=crop" alt="Electrician working"/>
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat-block">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years in Business</div>
   </div>
-  <div class="split-content">
-    <div class="section-label">About Us</div>
-    <h2 class="section-title">Trinidad's Trusted Electrician</h2>
+  <div class="stat-block">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Jobs Completed</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Emergency Response</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Licensed & Insured</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&auto=format&fit=crop" alt="Electrical work"/>
+    <div class="about-img-overlay">
+      <div class="about-img-label">Est. 2014 · Port of Spain, T&T</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-eyebrow">About Us</div>
+    <h2 class="section-heading">Trinidad's Trusted Electrician</h2>
     <p>With over a decade of hands-on experience, we've built our reputation one satisfied customer at a time across Port of Spain and the East-West Corridor.</p>
     <p>Every job is done to the highest standard — no shortcuts, no guesswork. We show up on time, work clean and stand behind everything we do.</p>
-    <div class="stat-row">
-      <div class="mini-stat"><div class="mini-stat-num">10+</div><div class="mini-stat-label">Years Experience</div></div>
-      <div class="mini-stat"><div class="mini-stat-num">500+</div><div class="mini-stat-label">Jobs Done</div></div>
-      <div class="mini-stat"><div class="mini-stat-num">24/7</div><div class="mini-stat-label">Emergency</div></div>
+    <div class="cert-row">
+      <div class="cert-badge"><span>✓</span> T&TEC Certified</div>
+      <div class="cert-badge"><span>✓</span> Fully Licensed</div>
+      <div class="cert-badge"><span>✓</span> Insured</div>
+      <div class="cert-badge"><span>✓</span> All Areas</div>
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
-  <div class="services-outer">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Our Services</h2>
+  <div class="services">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-heading">Our Services</h2>
+      </div>
+      <a href="#contact" class="btn-ghost">Get a Quote →</a>
+    </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&auto=format&fit=crop" alt="Wiring"/></div>
-        <div class="service-card-body"><div class="service-name">🔌 Wiring & Rewiring</div><p class="service-desc">Full residential and commercial wiring. New builds, extensions and complete rewires done to T&T standards.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🔌</div>
+        <div class="service-name">Wiring & Rewiring</div>
+        <p class="service-desc">Full residential and commercial wiring. New builds, extensions and complete rewires done to T&T standards.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1509390874189-1088a7870f16?w=600&auto=format&fit=crop" alt="Fault Finding"/></div>
-        <div class="service-card-body"><div class="service-name">⚡ Fault Finding</div><p class="service-desc">Tripping breakers, power outages, burning smells. We diagnose and fix electrical faults fast before they become dangerous.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Fault Finding</div>
+        <p class="service-desc">Tripping breakers, power outages, burning smells. We diagnose and fix electrical faults fast before they become dangerous.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1565608438257-fac3c27bdbfe?w=600&auto=format&fit=crop" alt="Lighting"/></div>
-        <div class="service-card-body"><div class="service-name">💡 Lighting Installation</div><p class="service-desc">Indoor and outdoor lighting, LED upgrades, security lights and decorative setups for homes and businesses.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon">💡</div>
+        <div class="service-name">Lighting Installation</div>
+        <p class="service-desc">Indoor and outdoor lighting, LED upgrades, security lights and decorative setups for homes and businesses.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop" alt="Panel"/></div>
-        <div class="service-card-body"><div class="service-name">🔋 Panel Upgrades</div><p class="service-desc">Breaker box replacements, panel upgrades and load balancing to keep your property safe and up to code.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">🔋</div>
+        <div class="service-name">Panel Upgrades</div>
+        <p class="service-desc">Breaker box replacements, panel upgrades and load balancing to keep your property safe and up to code.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=600&auto=format&fit=crop" alt="AC Wiring"/></div>
-        <div class="service-card-body"><div class="service-name">❄️ AC & Appliance Wiring</div><p class="service-desc">Dedicated circuits for air conditioning, stoves, water heaters and heavy appliances. Done correctly the first time.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <div class="service-icon">❄️</div>
+        <div class="service-name">AC & Appliance Wiring</div>
+        <p class="service-desc">Dedicated circuits for air conditioning, stoves, water heaters and heavy appliances. Done correctly the first time.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&auto=format&fit=crop" alt="Emergency"/></div>
-        <div class="service-card-body"><div class="service-name">🚨 Emergency Services</div><p class="service-desc">Electrical emergencies don't wait. We respond quickly across POS and the East-West Corridor — day or night.</p></div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <div class="service-icon">🚨</div>
+        <div class="service-name">Emergency Services</div>
+        <p class="service-desc">Electrical emergencies don't wait. We respond quickly across POS and the East-West Corridor — day or night.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="gallery" class="gallery-section">
-  <div class="gallery-inner">
-    <div class="section-label">Our Work</div>
-    <h2 class="section-title">Recent Jobs</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&auto=format&fit=crop" alt="Job 1"/></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&auto=format&fit=crop" alt="Job 2"/></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509390874189-1088a7870f16?w=600&auto=format&fit=crop" alt="Job 3"/></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop" alt="Job 4"/></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=600&auto=format&fit=crop" alt="Job 5"/></div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-eyebrow reveal">How It Works</div>
+    <h2 class="section-heading reveal">Simple Process</h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">WhatsApp Us</div>
+        <p class="step-desc">Send a message describing your job. We respond fast — usually within the hour.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Get a Quote</div>
+        <p class="step-desc">We give you a fair, upfront price. No hidden fees, no surprises.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">We Show Up</div>
+        <p class="step-desc">On time, with all the right tools. We work clean and respect your space.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Job Done Right</div>
+        <p class="step-desc">Every job completed to the highest standard — guaranteed.</p>
+      </div>
     </div>
   </div>
 </section>
 
+
+<!-- TESTIMONIALS -->
 <section class="testimonials">
-  <div class="section-label">What People Say</div>
-  <h2 class="section-title">Customer Reviews</h2>
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Called him at 8pm when my breaker kept tripping. He came within the hour and fixed everything properly. Very professional and reasonably priced.</p>
-      <div class="testimonial-author">Marcus T.</div><div class="testimonial-loc">Barataria</div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Rewired my whole house after a renovation. Neat work, no mess left behind and he explained everything clearly. Would highly recommend to anyone.</p>
-      <div class="testimonial-author">Priya R.</div><div class="testimonial-loc">San Juan</div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Installed three AC units and did all the wiring for my new office. Fast, reliable and the price was fair. He's the only electrician I'll call now.</p>
-      <div class="testimonial-author">Derek M.</div><div class="testimonial-loc">Port of Spain</div>
+  <div class="testimonials-inner">
+    <div class="section-eyebrow reveal">What People Say</div>
+    <h2 class="section-heading reveal">Customer Reviews</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">Called him at 8pm when my breaker kept tripping. He came within the hour and fixed everything properly. Very professional and reasonably priced.</p>
+        <div class="t-author">Marcus T.</div>
+        <div class="t-loc">Barataria</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">Rewired my whole house after a renovation. Neat work, no mess left behind and he explained everything clearly. Would highly recommend to anyone.</p>
+        <div class="t-author">Priya R.</div>
+        <div class="t-loc">San Juan</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">Installed three AC units and did all the wiring for my new office. Fast, reliable and the price was fair. He's the only electrician I'll call now.</p>
+        <div class="t-author">Derek M.</div>
+        <div class="t-loc">Port of Spain</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-banner">
-  <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&auto=format&fit=crop" alt="background"/>
-  <div class="cta-banner-content">
-    <h2>Don't Risk It With <span>Unlicensed</span> Workers</h2>
-    <p>Bad electrical work can cost you 10x more to fix — and put your family at risk. Get it done right the first time.</p>
-    <a href="https://wa.me/18681234567" class="btn-primary" style="display:inline-flex;margin:0 auto;">⚡ Get a Free Quote Today</a>
+  <div class="cta-banner-bg">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&auto=format&fit=crop" alt=""/>
   </div>
-</section>
-
-<section id="contact" class="contact-section">
-  <div class="section-label">Reach Out</div>
-  <h2 class="section-title">Contact Us</h2>
-  <div class="contact-grid">
-    <div>
-      <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem;">Send us a WhatsApp describing your job and we'll get back to you fast with a quote. You speak directly with the electrician — no middleman.</p>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value">868-XXX-XXXX</div></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div><div class="contact-label">Areas Covered</div><div class="contact-value">Port of Spain & East-West Corridor</div></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🕐</div>
-        <div><div class="contact-label">Hours</div><div class="contact-value">Mon–Sat 7am–7pm · Emergency 24/7</div></div>
-      </div>
-      <div class="area-tags">
-        <span class="area-tag">Port of Spain</span><span class="area-tag">Laventille</span><span class="area-tag">Barataria</span><span class="area-tag">San Juan</span><span class="area-tag">Arima</span><span class="area-tag">Tunapuna</span><span class="area-tag">Curepe</span><span class="area-tag">St. Augustine</span>
-      </div>
+  <div class="cta-content">
+    <div class="cta-text reveal">
+      <h2>Don't Risk It With<br><em>Unlicensed</em> Workers.</h2>
+      <p>Bad electrical work can cost you 10× more to fix — and put your family at risk. Get it done right the first time by someone you can trust.</p>
     </div>
-    <div>
-      <a href="https://wa.me/18681234567" class="whatsapp-btn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Chat on WhatsApp
-      </a>
-      <a href="tel:8681234567" class="call-btn">📞 Call Us Now</a>
-      <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:1rem;">Describe your job and get a quote — usually within the hour</p>
+    <div class="cta-actions reveal">
+      <a href="https://wa.me/18681234567" class="btn-primary" style="font-size:0.82rem">⚡ Get a Free Quote</a>
+      <div class="cta-note">Usually respond within the hour</div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact">
+    <div class="section-eyebrow reveal">Reach Out</div>
+    <h2 class="section-heading reveal">Contact Us</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info-item">
+          <div class="contact-icon-box">📞</div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-value">868-XXX-XXXX</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon-box">📍</div>
+          <div>
+            <div class="contact-label">Areas Covered</div>
+            <div class="contact-value">Port of Spain & East-West Corridor</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon-box">🕐</div>
+          <div>
+            <div class="contact-label">Hours</div>
+            <div class="contact-value">Mon–Sat 7am–7pm · Emergency 24/7</div>
+          </div>
+        </div>
+        <div class="area-tags">
+          <span class="area-tag">Port of Spain</span>
+          <span class="area-tag">Laventille</span>
+          <span class="area-tag">Barataria</span>
+          <span class="area-tag">San Juan</span>
+          <span class="area-tag">Arima</span>
+          <span class="area-tag">Tunapuna</span>
+          <span class="area-tag">Curepe</span>
+          <span class="area-tag">St. Augustine</span>
+        </div>
+      </div>
+      <div class="contact-actions reveal">
+        <a href="https://wa.me/18681234567" class="whatsapp-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="tel:8681234567" class="call-btn">📞 Call Us Now</a>
+        <p class="contact-tagline">Describe your job · Get a quote · Usually within the hour</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 <span>VoltagePro Electrical Services</span> · Port of Spain, Trinidad & Tobago · All Rights Reserved</p>
+  <div class="footer-logo">Voltage<span>Pro</span></div>
+  <p class="footer-copy">© 2026 VoltagePro Electrical Services · Port of Spain, Trinidad & Tobago</p>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </footer>
 
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
+  if (ring)   { ring.style.left  = rx + 'px'; ring.style.top  = ry + 'px'; }
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Hover effect on links
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    if (cursor) { cursor.style.width='18px'; cursor.style.height='18px'; }
+    if (ring)   { ring.style.width='52px'; ring.style.height='52px'; ring.style.opacity='0.9'; }
+  });
+  el.addEventListener('mouseleave', () => {
+    if (cursor) { cursor.style.width='10px'; cursor.style.height='10px'; }
+    if (ring)   { ring.style.width='36px'; ring.style.height='36px'; ring.style.opacity='0.5'; }
+  });
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// Hero image animation on load
+window.addEventListener('load', () => {
+  document.getElementById('heroRight')?.classList.add('loaded');
+});
+
+// Navbar style on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 60
+    ? 'rgba(245,196,0,0.15)'
+    : 'rgba(255,255,255,0.07)';
+});
+</script>
 </body>
 </html>
